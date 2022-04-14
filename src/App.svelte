@@ -8,9 +8,18 @@
 </header>
 
 <main>
-  <a href='https://store.steampowered.com/app/1968950/Decorporation/'>STEAM</a>
-  <a href='https://twitter.com/DecorpGame'>TWITTER</a>
-  <!-- <a href='https://twitter.com/DecorpGame'>DISCORD</a> -->
+  <a href='https://store.steampowered.com/app/1968950/Decorporation/'>
+    <img src='/steam.svg' alt='Steam'>
+    STEAM
+  </a>
+  <a href='https://twitter.com/DecorpGame'>
+    <img src='/twitter.svg' alt='Twitter'>
+    TWITTER
+  </a>
+  <a href='#'>
+    <img src='/discord.svg' alt='Discord'>
+    DISCORD
+  </a>
 </main>
 
 <style>
@@ -74,6 +83,12 @@
     border: 2px solid #444;
     border-radius: 5px;
     transition: all 0.2s;
+    display: inline-flex;
+    justify-content: center;
+  }
+  main a img {
+    width: 20px;
+    margin-right: 10px;
   }
   main a:hover {
     background: #aaaaaa;
