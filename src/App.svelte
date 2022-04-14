@@ -46,9 +46,8 @@
   header {
     position: fixed;
     top: 80px;
-    left: 50%;
+    left: 0;
     right: 0;
-    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
