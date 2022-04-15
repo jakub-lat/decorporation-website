@@ -1,5 +1,5 @@
 <script>
-  // import logo from './assets/logo.png';
+	import Button from './lib/Button.svelte';
 </script>
 
 <header>
@@ -8,18 +8,18 @@
 </header>
 
 <main>
-  <a href='https://store.steampowered.com/app/1968950/Decorporation/'>
-    <img src='/steam.svg' alt='Steam'>
+  <Button href='https://store.steampowered.com/app/1968950/Decorporation/' icon='steam'>
     STEAM
-  </a>
-  <a href='https://twitter.com/DecorpGame'>
-    <img src='/twitter.svg' alt='Twitter'>
+  </Button>
+  <Button href='https://twitter.com/DecorpGame' icon='twitter'>
     TWITTER
-  </a>
-  <a href='#'>
-    <img src='/discord.svg' alt='Discord'>
+  </Button>
+  <Button href='#' icon='discord'>
     DISCORD
-  </a>
+  </Button>
+  <br />
+  <br />
+  <a href='https://cubepotato.eu'>MADE BY CUBEPOTATO.EU</a>
 </main>
 
 <style>
@@ -67,29 +67,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 50px;
+    padding: 40px;
     text-align: center;
   }
-
-  main a {
-    color: black;
-    background: #ccc;
-    padding: 10px 20px;
-    text-decoration: none;
+  a {
+    font-size: 17px;
+    color: #eee;
     font-weight: bold;
-    font-size: 18px;
-    margin: 10px;
-    border: 2px solid #444;
-    border-radius: 5px;
-    transition: all 0.2s;
-    display: inline-flex;
-    justify-content: center;
-  }
-  main a img {
-    width: 20px;
-    margin-right: 10px;
-  }
-  main a:hover {
-    background: #aaaaaa;
   }
 </style>
