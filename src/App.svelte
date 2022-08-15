@@ -14,7 +14,7 @@
   <Button href='https://twitter.com/DecorpGame' icon='twitter'>
     TWITTER
   </Button>
-  <Button href='https://discord.gg/JATqh6w5xb' icon='discord'>
+  <Button href='https://discord.gg/5VNucjuBpe' icon='discord'>
     DISCORD
   </Button>
   <br />
