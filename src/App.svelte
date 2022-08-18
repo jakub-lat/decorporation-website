@@ -7,7 +7,12 @@
   import GoPlay from 'svelte-icons/go/GoPlay.svelte'
 
   let showVideo = false;
-  console.log(showVideo);
+  let video;
+
+  function play() {
+    showVideo = true;
+    video.play();
+  }
 </script>
 
 <header>
@@ -15,12 +20,15 @@
   <h2>COMING SOON</h2>
 </header>
 
+<video muted src='/teaser.mp4' 
+  on:ended={(e) => showVideo = false} 
+  bind:this={video}
+  style={`opacity: ${showVideo ? '1' : '0'}`}>
+</video>
+<div class='overlay'style={`opacity: ${showVideo ? '1' : '0'}`} />
 
-{#if showVideo}
-<video autoplay muted src='/teaser.mp4' on:ended={(e) => showVideo = false}></video>
-<div class='overlay' />
-{:else}
-<div class='play' on:click={(e) => showVideo = !showVideo}>
+{#if !showVideo}
+<div class='play' on:click={(e) => play()}>
   <button title='Play teaser'>
     <GoPlay />
   </button>
@@ -70,6 +78,7 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    transition: opacity 0.1s;
   }
 
   .overlay {
@@ -79,6 +88,7 @@
     top: 0; left: 0;
     background: rgba(0, 0, 0, 0.3);
     z-index: 1;
+    transition: opacity 0.1s;
   }
 
   header {
@@ -126,6 +136,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 5;
   }
 
   .play button {
@@ -135,6 +146,7 @@
     width: 50px;
     height: 50px;
     transition: color 0.1s;
+    cursor: pointer;
   }
 
   .play button:hover {
