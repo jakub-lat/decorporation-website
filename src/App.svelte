@@ -1,5 +1,13 @@
 <script>
 	import Button from './lib/Button.svelte';
+	import IconButton from './lib/IconButton.svelte';
+  import FaSteam from 'svelte-icons/fa/FaSteam.svelte';
+  import FaDiscord from 'svelte-icons/fa/FaDiscord.svelte';
+  import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';
+  import GoPlay from 'svelte-icons/go/GoPlay.svelte'
+
+  let showVideo = false;
+  console.log(showVideo);
 </script>
 
 <header>
@@ -7,20 +15,35 @@
   <h2>COMING SOON</h2>
 </header>
 
+
+{#if showVideo}
+<video autoplay muted src='/teaser.mp4' on:ended={(e) => showVideo = false}></video>
+<div class='overlay' />
+{:else}
+<div class='play' on:click={(e) => showVideo = !showVideo}>
+  <button title='Play teaser'>
+    <GoPlay />
+  </button>
+</div>
+{/if}
+
 <main>
-  <Button href='https://store.steampowered.com/app/1968950/Decorporation/' icon='steam'>
-    STEAM
+  <Button href='https://store.steampowered.com/app/1968950/Decorporation/' icon={FaSteam} type='primary'>
+    WISHLIST NOW
   </Button>
-  <Button href='https://twitter.com/DecorpGame' icon='twitter'>
-    TWITTER
-  </Button>
-  <Button href='https://discord.gg/5VNucjuBpe' icon='discord'>
-    DISCORD
-  </Button>
-  <br />
-  <br />
+  <div style='margin: 35px 0 15px 0'>
+    <IconButton href='https://twitter.com/DecorpGame'>
+      <FaTwitter />
+    </IconButton>
+    <IconButton href='https://discord.gg/5VNucjuBpe'>
+      <FaDiscord />
+    </IconButton>
+  </div>
   <a href='https://cubepotato.eu'>MADE BY CUBEPOTATO.EU</a>
 </main>
+
+<footer>
+</footer>
 
 <style>
   :global(*) {
@@ -43,6 +66,21 @@
     height: 100vh;
   }
 
+  video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
   header {
     position: fixed;
     top: 80px;
@@ -51,6 +89,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 10;
   }
 
   header h2 {
@@ -67,12 +106,38 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
+    z-index: 10;
   }
-  a {
-    font-size: 17px;
-    color: #eee;
+  main a {
+    font-size: 15px;
+    color: #ddd;
     font-weight: bold;
+  }
+
+  .play {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .play button {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    width: 50px;
+    height: 50px;
+    transition: color 0.1s;
+  }
+
+  .play button:hover {
+    color: #bbb;
   }
 </style>

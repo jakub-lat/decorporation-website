@@ -1,32 +1,41 @@
 <script>
-    export let href, icon;
+    export let href, icon, type = 'secondary';
+    const colors = {
+        primary: ['#d6173c', 'white', '#8a0e26'], 
+        secondary: ['#ccc', 'black', '#444'],
+    }
 </script>
 
-<a {href}>
-    {#if icon}<img src={`/icons/${icon}.svg`} alt={icon}>{/if}
+<a {href} style={`--bg-color: ${colors[type][0]}; --text-color: ${colors[type][1]}; --border-color: ${colors[type][2]}`}>
+    {#if icon}
+    <div class='icon'>
+        <svelte:component this={icon} class='icon' />
+    </div>
+    {/if}
     <slot />
 </a>
 
 <style>
     a {
-        color: black;
-        background: #ccc;
+        color: var(--text-color);
+        background-color: var(--bg-color);
         padding: 10px 20px;
         text-decoration: none;
         font-weight: bold;
         font-size: 18px;
         margin: 10px;
-        border: 2px solid #444;
+        border: 2px solid var(--border-color);
         border-radius: 5px;
         transition: all 0.2s;
         display: inline-flex;
         justify-content: center;
     }
-    a img {
-        width: 20px;
+    a .icon {
+        width: 22px;
+        height: 22px;
         margin-right: 10px;
     }
     a:hover {
-        background: #aaaaaa;
+        filter: brightness(85%);
     }
 </style>
